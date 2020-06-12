@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { observable, action } from "mobx";
 import { observer } from "mobx-react";
-
 import Todo from "./Todo";
 
 @observer
@@ -12,13 +11,13 @@ class TodoList extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleFormSubmit}>
-          New Todo:
+          新增Todo项:
           <input
             type="text"
             value={this.newTodoTitle}
-            onChange={this.handleInputChange}
+            onChange={this.handleNewTodoTitleChange}
           />
-          <button type="submit">Add</button>
+          <button type="submit">添加</button>
         </form>
         <hr />
         <ul>
@@ -26,13 +25,13 @@ class TodoList extends React.Component {
             <Todo todo={todo} key={todo.id} />
           ))}
         </ul>
-        Tasks left: {this.props.store.unfinishedTodoCount}
+        未完成项: {this.props.store.unfinishedTodoCount}个
       </div>
     );
   }
 
   @action
-  handleInputChange = e => {
+  handleNewTodoTitleChange = e => {
     this.newTodoTitle = e.target.value;
   };
 

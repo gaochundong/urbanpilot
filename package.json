@@ -6,8 +6,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "start": "webpack-dev-server --hot --open",
-    "build": "webpack",
-    "lint": "eslint src"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
