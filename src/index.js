@@ -1,16 +1,24 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import "index.scss";
+import { render } from "react-dom";
+import DevTools from "mobx-react-devtools";
 
-let HelloWorld = () => {
-    return (
-        <div>
-            <h1>这是测试页面的标题</h1>
-        </div>
-    );
-}
+import TodoList from "./components/TodoList";
+import TodoListModel from "./models/TodoListModel";
 
-ReactDOM.render(
-    <HelloWorld />,
-    document.getElementById("root")
+const store = new TodoListModel();
+
+render(
+  <div>
+    <DevTools />
+    <TodoList store={store} />
+  </div>,
+  document.getElementById("root")
 );
+
+store.addTodo("Get Coffee");
+store.addTodo("Write simpler code");
+store.todos[0].finished = true;
+
+setTimeout(() => {
+  store.addTodo("Get a cookie as well");
+}, 2000);

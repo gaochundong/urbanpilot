@@ -1,2 +1,3 @@
 # urbanpilot
-A demo of front-end UI.
+
+A boilerplate of front-end UI.
