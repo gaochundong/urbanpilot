@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { observable, action } from "mobx";
 import { observer } from "mobx-react";
-import Todo from "./Todo";
+import TodoView from "./TodoView";
 
 @observer
-class TodoList extends React.Component {
+class TodoListView extends React.Component {
   @observable newTodoTitle = "";
 
   render() {
@@ -21,11 +21,11 @@ class TodoList extends React.Component {
         </form>
         <hr />
         <ul>
-          {this.props.store.todos.map(todo => (
-            <Todo todo={todo} key={todo.id} />
+          {this.props.viewModel.todos.map(todo => (
+            <TodoView todo={todo} key={todo.id} />
           ))}
         </ul>
-        未完成项: {this.props.store.unfinishedTodoCount}个
+        未完成项: {this.props.viewModel.unfinishedTodoCount}个
       </div>
     );
   }
@@ -37,10 +37,10 @@ class TodoList extends React.Component {
 
   @action
   handleFormSubmit = e => {
-    this.props.store.addTodo(this.newTodoTitle);
+    this.props.viewModel.addTodo(this.newTodoTitle);
     this.newTodoTitle = "";
     e.preventDefault();
   };
 }
 
-export default TodoList;
+export default TodoListView;

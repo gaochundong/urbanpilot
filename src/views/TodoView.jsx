@@ -1,7 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react";
 
-const Todo = observer(({ todo }) => (
+const TodoView = observer(({ todo }) => (
   <li>
     <input
       type="checkbox"
@@ -12,4 +12,4 @@ const Todo = observer(({ todo }) => (
   </li>
 ));
 
-export default Todo;
+export default TodoView;
